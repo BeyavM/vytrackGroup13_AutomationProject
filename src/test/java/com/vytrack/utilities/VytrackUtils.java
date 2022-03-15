@@ -19,7 +19,6 @@ public class VytrackUtils {
         Driver.getDriver().findElement(By.cssSelector("#prependedInput2")).sendKeys(password);
         //click login button
         Driver.getDriver().findElement(By.tagName("button")).click();
-
     }
 
     public static void loginAsDriver() {
