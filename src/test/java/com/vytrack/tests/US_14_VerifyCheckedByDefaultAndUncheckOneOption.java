@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class US_14_VerifyCheckedByDefault extends TestBase {
+public class US_14_VerifyCheckedByDefaultAndUncheckOneOption extends TestBase {
     @Test(priority = 1)
     public void manageFilters_SalesManager() {
         VytrackUtils.loginAsSalesManager();
@@ -37,6 +37,13 @@ public class US_14_VerifyCheckedByDefault extends TestBase {
         for (WebElement option : allOptions) {
             Assert.assertTrue(option.isSelected(), "ALL options not selected!");
         }
+        //  Verify one unchecked
+        WebElement option1 = Driver.getDriver().findElement(By.xpath("(//input[@title='Name'])"));
+        option1.click();
+
+        System.out.println(option1+" is unchecked");
+
+
     }
 
 
@@ -61,9 +68,20 @@ public class US_14_VerifyCheckedByDefault extends TestBase {
         WebElement manageFilterBtn = Driver.getDriver().findElement(By.xpath("//*[@class= 'add-filter-button']/span"));
         manageFilterBtn.click();
         //Verify 6 options are checked by default
+        BrowserUtils.sleep(1);
         List<WebElement> allOptions = Driver.getDriver().findElements(By.xpath("//div[@class='ui-multiselect-menu ui-corner-all select-filter-widget dropdown-menu']/ul/li/label/input"));
         for (WebElement option : allOptions) {
             Assert.assertTrue(option.isSelected(), "ALL options not selected!");
+
+        }
+ //  Verify one unchecked
+
+
+          WebElement option1 = Driver.getDriver().findElement(By.xpath("(//input[@title='Name'])"));
+            option1.click();
+
+        System.out.println(option1+" is unchecked");
+
+
         }
     }
-}
